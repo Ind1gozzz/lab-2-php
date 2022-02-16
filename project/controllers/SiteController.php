@@ -146,11 +146,6 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionSay($message = 'Hello')
-    {
-        return $this -> render('say', ['message' => $message]);
-    }
-
     public function actionEntry()
     {
         $model = new EntryForm();
@@ -169,25 +164,9 @@ class SiteController extends Controller
         return $this -> render('info');
     }
 
-    public function actionRateForm()
+    public function actionIndexForm()
     {
-        $model = new RateForm();
-        if ($model -> load(Yii::$app -> request -> post()) && $model -> validate())
-        {
-            return $this -> render('rate-form-confirm', ['model' => $model]);
-        } else
-        {
-            return $this -> render('rate-form', ['model' => $model]);
-        }
+        return $this -> render('index-form');
     }
 
-    public function actionLab2()
-    {
-        return $this -> render('lab2');
-    }
-
-    public function actionLab3()
-    {
-        return $this -> render('lab3');
-    }
 }
