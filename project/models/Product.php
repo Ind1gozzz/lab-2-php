@@ -9,11 +9,11 @@
 
     class Product extends ActiveRecord
     {
-        public $yesorno;
+        public $boolAndOr;
         public $firstcat;
         public $secondcat;
-
-
+        public $number;
+        public $param;
 
         public static function tableName()
         {
@@ -29,7 +29,8 @@
         {
             return
             [
-                
+                [['boolAndOr', 'firstcat', 'secondcat'], 'string'],
+                [['number', 'param'], 'number',],
             ];
         }
     }
