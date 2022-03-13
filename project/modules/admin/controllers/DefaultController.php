@@ -4,6 +4,9 @@
 
     use yii\web\Controller;
     use yii\filters\AccessControl;
+    use app\models\User;
+    use Yii;
+
 
 
     
@@ -31,6 +34,29 @@
          */
         public function actionIndex()
         {
-            return $this->render('index');
+            $role = User::getRole();
+            if ( $role == "admin" or $role == "user")
+            return $this->render('index', [
+                'role' => $role
+            ]);
+        }
+        
+    
+        public function actionAdmin()
+        {
+            $role = User::getRole();
+            if ($role == "admin")
+            {
+            return $this -> render('index-admin', [
+                'role' => $role
+            ]);
+            }
+            elseif ($role == "user")
+            {
+            return $this -> render('index-admin-denied', [
+                'role' => $role
+            ]);
+            }
         }
     }
+    

@@ -25,3 +25,7 @@
         <?php ActiveForm::end(); ?>
     </div>
 </div>
+<br>
+<?php echo(pow(38, 29) % 91); ?>
+<br>
+<?echo(7 % 5);?>
