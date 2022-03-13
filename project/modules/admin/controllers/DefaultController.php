@@ -6,6 +6,7 @@
     use yii\filters\AccessControl;
     use app\models\User;
     use Yii;
+    use app\models\Product;
 
 
 
@@ -34,27 +35,34 @@
          */
         public function actionIndex()
         {
+            $prod = Product::find();
+            $products = $prod -> limit('15') -> all();
             $role = User::getRole();
             if ( $role == "admin" or $role == "user")
             return $this->render('index', [
-                'role' => $role
+                'role' => $role,
+                'products' => $products
             ]);
         }
         
     
         public function actionAdmin()
         {
+            $prod = Product::find();
+            $products = $prod -> limit('15') -> all();
             $role = User::getRole();
             if ($role == "admin")
             {
             return $this -> render('index-admin', [
-                'role' => $role
+                'role' => $role,
+                'products' => $products
             ]);
             }
             elseif ($role == "user")
             {
             return $this -> render('index-admin-denied', [
-                'role' => $role
+                'role' => $role,
+                'products' => $products
             ]);
             }
         }
